@@ -32,10 +32,5 @@ namespace Sample
         {
             throw new System.NotImplementedException();
         }
-
-        IParameter IConfig.GetRequestParameters(int sequence, string[] parameter)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
