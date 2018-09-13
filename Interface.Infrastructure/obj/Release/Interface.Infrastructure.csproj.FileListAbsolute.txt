@@ -78,4 +78,3 @@ C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.csproj.CopyComplete
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.dll
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.pdb
-C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.csprojAssemblyReference.cache
