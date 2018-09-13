@@ -1,0 +1,14 @@
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Interface.Framework.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Interface.Framework.pdb
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Common.Logging.Core.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Common.Logging.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Common.Logging.Log4Net1213.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\log4net.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\sapnco.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\bin\Debug\sapnco_utils.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Framework.csprojAssemblyReference.cache
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Framework.csproj.CoreCompileInputs.cache
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Framework.csproj.CopyComplete
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Framework.dll
+C:\ProjectDemo\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Framework.pdb
