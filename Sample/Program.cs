@@ -9,9 +9,7 @@ namespace Sample
     {
         static void Main(string[] args)
         {
-
             //json http
-
             HttpRequestSample();
 
             //soap http

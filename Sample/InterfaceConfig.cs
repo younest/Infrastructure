@@ -43,7 +43,7 @@ namespace Sample
                     query = InterfaceParameterSettings.Setting(parameter[0], parameter[1], DataFormatter.JSON);
                     break;
                 case (int)ServiceName.CustomerService:
-                    query = InterfaceParameterSettings.Setting(parameter[0], parameter[1], DataFormatter.JSON);
+                    query = InterfaceParameterSettings.Setting(parameter[0], parameter[1], DataFormatter.XML);
                     break;
                 default:
                     break;
