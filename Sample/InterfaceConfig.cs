@@ -1,14 +1,19 @@
-﻿
+﻿using Common.Logging;
+
 using System.Configuration;
 using System.Collections.Generic;
+
 using Interface.Infrastructure.Core;
 using Interface.Infrastructure.Entities;
+using Interface.Infrastructure.Utilities;
 
 namespace Sample
 {
     public class InterfaceConfig : IConfig
     {
         private static InterfaceConfig _instance = null;
+
+        private static ILog logeer = LogManager.GetLogger("InterfaceConfig");
 
         private InterfaceConfig() { }
 
@@ -30,7 +35,21 @@ namespace Sample
 
         public IParameter GetRequestParameters(int sequence, string[] parameter)
         {
-            throw new System.NotImplementedException();
+            IParameter query = null;
+
+            switch (sequence)
+            {
+                case (int)ServiceName.UserService:
+                    query = InterfaceParameterSettings.Setting(parameter[0], parameter[1], DataFormatter.JSON);
+                    break;
+                case (int)ServiceName.CustomerService:
+                    query = InterfaceParameterSettings.Setting(parameter[0], parameter[1], DataFormatter.JSON);
+                    break;
+                default:
+                    break;
+            }
+
+            return query;
         }
     }
 }
