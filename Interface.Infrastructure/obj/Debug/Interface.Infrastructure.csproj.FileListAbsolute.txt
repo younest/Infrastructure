@@ -59,3 +59,17 @@ C:\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.c
 C:\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.dll
 C:\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.pdb
 C:\eBest.Libraries\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.csprojAssemblyReference.cache
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Interface.Infrastructure.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Interface.Infrastructure.pdb
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Common.Logging.Core.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Common.Logging.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Common.Logging.Log4Net1213.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\log4net.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\sapnco.dll
+C:\Infrastructure\Interface.Infrastructure\bin\Debug\sapnco_utils.dll
+C:\Infrastructure\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.csprojAssemblyReference.cache
+C:\Infrastructure\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Infrastructure\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.csproj.CopyComplete
+C:\Infrastructure\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.dll
+C:\Infrastructure\Interface.Infrastructure\obj\Debug\Interface.Infrastructure.pdb

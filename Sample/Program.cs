@@ -1,7 +1,10 @@
-﻿using Interface.Infrastructure.Entities;
-using Interface.Infrastructure.Utilities;
-using System.Text;
+﻿
 using System.Xml;
+using System.Text;
+
+using Interface.Infrastructure.Entities;
+using Interface.Infrastructure.Utilities;
+
 
 namespace Sample
 {
@@ -13,20 +16,23 @@ namespace Sample
             HttpRequestSample();
 
             //soap http
-            HttpSoapSample();
+            //HttpSoapSample();
 
             //InterfaceRequest
-            InterfaceRequestSample();
+            //InterfaceRequestSample();
+
+            //SendMailSample
+            //InterfaceSendMailSample();
         }
 
         static void HttpSoapSample()
         {
             //获取配置参数
-            string[] p = new string[] { (string)InterfaceConfig.Instance.GetParameter()["POS"],string.Empty,
+            string[] p = new string[] { (string)InterfaceParameter.Instance.GetConfigParameters()["POS"],string.Empty,
                                         System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")};
 
             //创建Soap实体对象并添加参数
-            SoapEntity soap = new SoapEntity();
+            SoapParameter soap = new SoapParameter();
 
             StringBuilder sb = new StringBuilder();
             //添加根节点
@@ -47,7 +53,7 @@ namespace Sample
             soap.MethodParameterValue = sb.ToString();
 
             //创建请求对象
-            IParameter query = InterfaceParameterSettings.Setting(p[0], soap, DataFormatter.SOAP);
+            HttpParameters query = InterfaceHttpConfig.Setting(p[0], soap.ToString(), DataFormatter.SOAP);
 
             //调用接口获取返回信息；
             HttpParameters http = (HttpParameters)query;
@@ -69,10 +75,10 @@ namespace Sample
         static void InterfaceRequestSample()
         {
             int sequence = (int)ServiceName.UserService;
-            string url = (string)InterfaceConfig.Instance.GetParameter()["POS"];
+            string url = (string)InterfaceParameter.Instance.GetConfigParameters()["POS"];
 
             string[] p = new string[] { url, string.Empty };
-            IParameter query = InterfaceConfig.Instance.GetRequestParameters(sequence, p);
+            HttpParameters query = InterfaceParameter.Instance.GetHttpParameters(sequence, p);
 
             InterfaceRequest request = new InterfaceRequest();
             request.Sequence = sequence;

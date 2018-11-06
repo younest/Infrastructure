@@ -6,9 +6,9 @@ using SAP.Middleware.Connector;
 
 namespace Interface.Infrastructure.Utilities
 {
-    public class InterfaceParameterSettings
+    public class InterfaceHttpConfig
     {
-        private static string FromSoapToString(SoapEntity soap)
+        private static string FromSoapToString(SoapParameter soap)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -41,27 +41,31 @@ namespace Interface.Infrastructure.Utilities
             return sb.ToString();
         }
 
-        public static IParameter Setting(string url, object obj, DataFormatter formatter)
+        public static HttpParameters Setting(string url, string request, DataFormatter formatter)
         {
             HttpParameters parameter = new HttpParameters();
             parameter.Url = url;
             switch (formatter)
             {
                 case DataFormatter.SOAP:
-                    SoapEntity input = (SoapEntity)obj;
                     parameter.ContentType = ContentType.Soap;
-                    parameter.soapAction = input.SoapAction;
-                    parameter.ParameterValue = FromSoapToString(input);
+                    //parameter.soapAction = input.SoapAction;
+                    parameter.ParameterValue = request;
+                    break;
+                case DataFormatter.OData:
+                    parameter.ContentType = ContentType.Soap;
+                    parameter.soapAction = "";
+                    parameter.ParameterValue = request;
                     break;
                 case DataFormatter.XML:
                     parameter.ContentType = ContentType.Xml;
                     parameter.soapAction = "";
-                    parameter.ParameterValue = obj.ToString();
+                    parameter.ParameterValue = request;
                     break;
                 case DataFormatter.JSON:
                     parameter.ContentType = ContentType.Json;
                     parameter.soapAction = "";
-                    parameter.ParameterValue = obj.ToString();
+                    parameter.ParameterValue = request;
                     break;
                 default:
                     break;
@@ -69,7 +73,7 @@ namespace Interface.Infrastructure.Utilities
             return parameter;
         }
 
-        public static IParameter Setting(string destinationsName, string functionName, string tableName, Dictionary<string, string> parameter)
+        public static SapParameters Setting(string destinationsName, string functionName, string tableName, Dictionary<string, string> parameter)
         {
             SapParameters sap = new SapParameters();
 

@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Runtime.Serialization;
 
 using Newtonsoft.Json;
+using System.Xml;
 
 namespace Interface.Infrastructure.Utilities
 {
@@ -52,14 +53,47 @@ namespace Interface.Infrastructure.Utilities
             }
         }
 
-        public static string JsonSerialize(object value)
+        public static string JsonSerialize(object value, Newtonsoft.Json.Formatting formatting)
         {
-            return JsonConvert.SerializeObject(value);
+            JsonSerializerSettings jsetting = new JsonSerializerSettings();
+            jsetting.DefaultValueHandling = DefaultValueHandling.Ignore;
+            jsetting.NullValueHandling = NullValueHandling.Ignore;
+
+            return JsonConvert.SerializeObject(value, formatting, jsetting);
         }
 
         public static T JsonDeserialize<T>(string json)
         {
-            return (T)JsonConvert.DeserializeObject<T>(json);
+            JsonSerializerSettings jsetting = new JsonSerializerSettings();
+            jsetting.DefaultValueHandling = DefaultValueHandling.Ignore;
+            jsetting.NullValueHandling = NullValueHandling.Ignore;
+
+            return (T)JsonConvert.DeserializeObject<T>(json, jsetting);
+        }
+
+        public static string XmlSerializer<T>(T obj)
+        {
+            string xmlString = string.Empty;
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(obj.GetType());
+
+                XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+                namespaces.Add("", "");
+
+                XmlWriterSettings setting = new XmlWriterSettings();
+                setting.Encoding = new UTF8Encoding(false);
+                setting.Indent =true;
+                setting.OmitXmlDeclaration = true;
+
+                using (XmlWriter writer = XmlWriter.Create(memoryStream, setting))
+                {
+                    xmlSerializer.Serialize(writer, obj, namespaces);
+                }
+                xmlString = Encoding.UTF8.GetString(memoryStream.ToArray());
+            }
+            return xmlString;
         }
 
         public static string XmlSerializer<T>(T obj, bool isNameSpaces)
@@ -73,9 +107,32 @@ namespace Interface.Infrastructure.Utilities
 
             using (StringWriter writer = new StringWriter())
             {
-
                 new XmlSerializer(obj.GetType()).Serialize((TextWriter)writer, obj, ns);
                 xmlString = writer.ToString();
+            }
+            return xmlString;
+        }
+
+        public static string XmlSerializer<T>(T obj, Encoding encoding)
+        {
+            string xmlString = string.Empty;
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(obj.GetType());
+
+                XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+                namespaces.Add("", "");
+
+                XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, encoding);
+                xmlTextWriter.Formatting = System.Xml.Formatting.None;
+
+                xmlSerializer.Serialize(xmlTextWriter, obj, namespaces);
+
+                xmlTextWriter.Flush();
+                xmlTextWriter.Close();
+
+                xmlString = encoding.GetString(memoryStream.ToArray());
             }
             return xmlString;
         }
@@ -100,4 +157,5 @@ namespace Interface.Infrastructure.Utilities
             }
         }
     }
+
 }

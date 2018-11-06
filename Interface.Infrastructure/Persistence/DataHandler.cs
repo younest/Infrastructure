@@ -17,8 +17,7 @@ namespace Interface.Infrastructure.Persistence
 
         private static SqlParameter GetParameters(DataTable table)
         {
-            SqlParameter tvpParam = new SqlParameter("@ManyRows", table);
-            tvpParam.SqlDbType = SqlDbType.Structured;
+            SqlParameter tvpParam = new SqlParameter("@ManyRows", SqlDbType.Structured) { Value = table };
             return tvpParam;
         }
 

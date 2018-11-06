@@ -70,7 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\IConfig.cs" />
+    <Compile Include="Core\IAccess.cs" />
+    <Compile Include="Core\IParameter.cs" />
     <Compile Include="Core\IHandler.cs" />
     <Compile Include="Entities\InterfaceEnum.cs" />
     <Compile Include="Entities\InterfaceMailEntity.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\InterfaceSapRequest.cs" />
     <Compile Include="Utilities\InterfaceSerializers.cs" />
-    <Compile Include="Utilities\InterfaceParameterSettings.cs" />
+    <Compile Include="Utilities\InterfaceHttpConfig.cs" />
     <Compile Include="Utilities\InterfaceHttpRequest.cs" />
     <Compile Include="Utilities\InterfaceMailServices.cs" />
   </ItemGroup>

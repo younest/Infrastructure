@@ -4,9 +4,8 @@ using System.Net;
 
 namespace Interface.Infrastructure.Entities
 {
-    public interface IParameter { }
 
-    public class HttpParameters : IParameter
+    public class HttpParameters
     {
         public string Url { get; set; }
 
@@ -21,7 +20,7 @@ namespace Interface.Infrastructure.Entities
         public RequestMethod Method { get; set; }
     }
 
-    public class SapParameters : IParameter
+    public class SapParameters
     {
         public string FunctionName { get; set; }
 
@@ -32,7 +31,7 @@ namespace Interface.Infrastructure.Entities
         public Dictionary<string, string> Parameter { get; set; }
     }
 
-    public class SoapEntity
+    public class SoapParameter
     {
         public string RootNode { get; set; }
 

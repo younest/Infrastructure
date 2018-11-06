@@ -58,6 +58,8 @@ C:\eBest.Libraries\Sample\bin\Release\Interface.Infrastructure.pdb
 C:\eBest.Libraries\Sample\obj\Release\Sample.csproj.CopyComplete
 C:\eBest.Libraries\Sample\obj\Release\Sample.exe
 C:\eBest.Libraries\Sample\obj\Release\Sample.pdb
+C:\Infrastructure\Sample\obj\Release\Sample.csprojAssemblyReference.cache
+C:\Infrastructure\Sample\obj\Release\Sample.csproj.CoreCompileInputs.cache
 C:\Infrastructure\Sample\bin\Release\Config\db.config
 C:\Infrastructure\Sample\bin\Release\Config\mailSettings.config
 C:\Infrastructure\Sample\bin\Release\Sample.exe.config
@@ -72,8 +74,6 @@ C:\Infrastructure\Sample\bin\Release\Newtonsoft.Json.dll
 C:\Infrastructure\Sample\bin\Release\sapnco.dll
 C:\Infrastructure\Sample\bin\Release\sapnco_utils.dll
 C:\Infrastructure\Sample\bin\Release\Interface.Infrastructure.pdb
-C:\Infrastructure\Sample\obj\Release\Sample.csprojAssemblyReference.cache
-C:\Infrastructure\Sample\obj\Release\Sample.csproj.CoreCompileInputs.cache
 C:\Infrastructure\Sample\obj\Release\Sample.csproj.CopyComplete
 C:\Infrastructure\Sample\obj\Release\Sample.exe
 C:\Infrastructure\Sample\obj\Release\Sample.pdb

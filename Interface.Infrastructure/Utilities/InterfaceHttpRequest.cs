@@ -24,8 +24,8 @@ namespace Interface.Infrastructure.Utilities
         }
 
         private static ILog logeer = LogManager.GetLogger("InterfaceHttpRequest");
- 
-        public static string Query(HttpParameters Parameters)
+
+        public static string Query(HttpParameters http)
         {
             string result = string.Empty;
 
@@ -34,17 +34,13 @@ namespace Interface.Infrastructure.Utilities
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-                switch (Parameters.Method)
+                switch (http.Method)
                 {
                     case RequestMethod.Get:
-                        result = Get(Parameters);
+                        result = ToGet(http);
                         break;
                     case RequestMethod.Post:
-                        result = Post(Parameters);
-                        break;
-                    case RequestMethod.Put:
-                        break;
-                    case RequestMethod.Delete:
+                        result = ToPost(http);
                         break;
                     default:
                         break;
@@ -56,15 +52,13 @@ namespace Interface.Infrastructure.Utilities
 
                 if (result.Length == 0)
                     result = wex.Message;
-
-                logeer.InfoFormat("{0}", result);
             }
             return result;
         }
 
-        public static XmlDocument QueryXml(HttpParameters Parameters)
+        public static XmlDocument QueryXml(HttpParameters http)
         {
-            string result = Query(Parameters);
+            string result = Query(http);
 
             XmlDocument doc = new XmlDocument();
 
@@ -74,15 +68,16 @@ namespace Interface.Infrastructure.Utilities
             return doc;
         }
 
-        private static string Get(HttpParameters Parameters)
+        private static string ToGet(HttpParameters http)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Parameters.Url + "/?" + Parameters.ParameterValue);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http.Url + "/?" + http.ParameterValue);
 
+            request.Timeout = 10 * 60 * 1000;
             request.Method = WebRequestMethods.Http.Get;
-            request.ContentType = Parameters.ContentType;
-            request.Headers.Add("soapAction", Parameters.soapAction);
-            request.Credentials = Parameters.Authorization;
-            request.Accept = Parameters.ContentType;
+            request.ContentType = http.ContentType;
+            request.Headers.Add("soapAction", http.soapAction);
+            request.Credentials = http.Authorization;
+            request.Accept = http.ContentType;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
@@ -92,22 +87,24 @@ namespace Interface.Infrastructure.Utilities
             }
         }
 
-        private static string Post(HttpParameters Parameters)
+        private static string ToPost(HttpParameters http)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Parameters.Url);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http.Url);
 
+            request.Timeout = 10 * 60 * 1000;
             request.Method = WebRequestMethods.Http.Post;
-            request.ContentType = Parameters.ContentType;
-            request.Headers.Add("soapAction", Parameters.soapAction);
-            request.Credentials = Parameters.Authorization;
-            request.Accept = Parameters.ContentType;
+            request.ContentType = http.ContentType;
+            request.Headers.Add("soapAction", http.soapAction);
+            request.Credentials = http.Authorization;
+            request.Accept = http.ContentType;
 
-            byte[] data = Encoding.UTF8.GetBytes(Parameters.ParameterValue);
+            byte[] data = Encoding.UTF8.GetBytes(http.ParameterValue);
             request.ContentLength = data.Length;
 
             using (Stream stream = request.GetRequestStream())
             {
                 stream.Write(data, 0, data.Length);
+
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
                     StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);

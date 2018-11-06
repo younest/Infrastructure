@@ -1,10 +1,11 @@
 ﻿using Common.Logging;
-using Interface.Infrastructure.Core;
-using Interface.Infrastructure.Entities;
-using Interface.Infrastructure.Persistence;
 
 using System.Data;
 using System.Collections.Generic;
+
+using Interface.Infrastructure.Core;
+using Interface.Infrastructure.Entities;
+using Interface.Infrastructure.Persistence;
 
 namespace Sample
 {
@@ -18,7 +19,7 @@ namespace Sample
 
         private InterfaceHandler()
         {
-            dbConnecString = (string)InterfaceConfig.Instance.GetParameter()["DB"];
+            dbConnecString = (string)InterfaceParameter.Instance.GetConfigParameters()["DB"];
         }
 
         public static InterfaceHandler Instance
