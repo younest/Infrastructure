@@ -6,7 +6,7 @@ namespace Interface.Infrastructure.Core
     public interface IAccess
     {
         string ToSerialization<T>(T obj);
-        List<T> ToDeserialization<T>(string obj);
+        List<T> ToDeserialization<T>(int sequence, string obj);
     }
 
     public interface IDownload
