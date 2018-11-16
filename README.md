@@ -1,8 +1,12 @@
 # Infrastructure
 基于.Net开发的常用接口基础框架主体包含三个接口实现完成：配置接口、接入接口、处理接口：
+
 <br>1)IParameter主要定义接口参数相关的处理细节；包括配置参数、查询参数、网络参数等；
+
 <br>2)IAccess主要定义接口接入部分的处理，其中包含IDownload、IUpload两个分支接口；
+
 <br>3)Ihandler主要定义数据实体层面的CRU等处理细节，分别各自对应：IGet、IPost、IPut接口；
+
 <br>4)其他包含了基于SAP接口、Quartz自动定时任务抽取第三方接口等相关配置项
 
 # Request Sample
@@ -12,6 +16,7 @@
 <br>p.Method = RequestMethod.Post;
 <br>p.ContentType = ContentType.Json;
 <br>p.ParameterValue = "";
+
 <br>string result = InterfaceHttpRequest.Query(p);
 ## 2)InterfaceRequestSample
 <br>int sequence = (int)ServiceName.UserService;
@@ -49,6 +54,7 @@
 
 <br>//创建请求对象
 <br>HttpParameters query = InterfaceHttpConfig.Setting(p[0], soap.ToString(), DataFormatter.SOAP);
+
 <br>//调用接口获取返回信息；
 <br>HttpParameters http = (HttpParameters)query;
 <br>XmlDocument doc = InterfaceHttpRequest.QueryXml(http);
