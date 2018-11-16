@@ -6,4 +6,10 @@
 3）其他包含了基于SAP接口、Quartz自动定时任务抽取第三方接口等相关配置项<br>
 
 # Http Request Sample
-=========================================<br>
+=========================================
+<br> HttpParameters p = new HttpParameters();
+<br>p.Url = "http://dmscn-m-dev.carlsberg.asia/Carlsberg/Service.svc/Customer/GetCustomerChain";
+<br>p.Method = RequestMethod.Post;
+<br>p.ContentType = ContentType.Json;
+<br>p.ParameterValue = "";
+<br>string result = InterfaceHttpRequest.Query(p);
