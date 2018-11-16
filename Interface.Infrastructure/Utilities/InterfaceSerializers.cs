@@ -62,16 +62,16 @@ namespace Interface.Infrastructure.Utilities
             return JsonConvert.SerializeObject(value, formatting, jsetting);
         }
 
-        public static T JsonDeserialize<T>(string json)
+        public static TEntity JsonDeserialize<TEntity>(string json)
         {
             JsonSerializerSettings jsetting = new JsonSerializerSettings();
             jsetting.DefaultValueHandling = DefaultValueHandling.Ignore;
             jsetting.NullValueHandling = NullValueHandling.Ignore;
 
-            return (T)JsonConvert.DeserializeObject<T>(json, jsetting);
+            return (TEntity)JsonConvert.DeserializeObject<TEntity>(json, jsetting);
         }
 
-        public static string XmlSerializer<T>(T obj)
+        public static string XmlSerializer<TEntity>(TEntity obj)
         {
             string xmlString = string.Empty;
 
@@ -84,7 +84,7 @@ namespace Interface.Infrastructure.Utilities
 
                 XmlWriterSettings setting = new XmlWriterSettings();
                 setting.Encoding = new UTF8Encoding(false);
-                setting.Indent =true;
+                setting.Indent = true;
                 setting.OmitXmlDeclaration = true;
 
                 using (XmlWriter writer = XmlWriter.Create(memoryStream, setting))
@@ -96,11 +96,11 @@ namespace Interface.Infrastructure.Utilities
             return xmlString;
         }
 
-        public static string XmlSerializer<T>(T obj, bool isNameSpaces)
+        public static string XmlSerializer<TEntity>(TEntity obj, bool isNameSpaces)
         {
             string xmlString = string.Empty;
 
-            if (isNameSpaces) { return WcfXmlSerializer<T>(obj); }
+            if (isNameSpaces) { return WcfXmlSerializer<TEntity>(obj); }
 
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -113,7 +113,7 @@ namespace Interface.Infrastructure.Utilities
             return xmlString;
         }
 
-        public static string XmlSerializer<T>(T obj, Encoding encoding)
+        public static string XmlSerializer<TEntity>(TEntity obj, Encoding encoding)
         {
             string xmlString = string.Empty;
 
@@ -137,20 +137,20 @@ namespace Interface.Infrastructure.Utilities
             return xmlString;
         }
 
-        public static T XmlDeserialize<T>(string xml)
+        public static TEntity XmlDeserialize<TEntity>(string xml)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            XmlSerializer serializer = new XmlSerializer(typeof(TEntity));
             using (StringReader reader = new StringReader(xml))
             {
-                return (T)serializer.Deserialize(reader);
+                return (TEntity)serializer.Deserialize(reader);
             }
         }
 
-        private static string WcfXmlSerializer<T>(T obj)
+        private static string WcfXmlSerializer<TEntity>(TEntity obj)
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                DataContractSerializer data = new DataContractSerializer(typeof(T));
+                DataContractSerializer data = new DataContractSerializer(typeof(TEntity));
                 data.WriteObject(ms, obj);
                 ms.Position = 0;
                 return Encoding.UTF8.GetString(ms.ToArray());

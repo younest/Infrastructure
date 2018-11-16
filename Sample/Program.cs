@@ -38,20 +38,16 @@ namespace Sample
             //添加根节点
             soap.RootNode = "soapenv";
             soap.RootDefaultNameSpace = "xmlns:ws=\"http://ws.nip.com\"";
-
             soap.SoapAction = "";
-
             //添加函数API
             soap.MethodNode = "ws:shopSystemInspectData";
             soap.MethodDefaultNameSpace = "soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"";
-
             //添加参数
             sb.AppendFormat("<shopcode xsi:type=\"xsd:string\">{0}</shopcode>", p[1]);
             sb.AppendFormat("<idate xsi:type=\"xsd:string\">{0}</idate>", p[2]);
-
             //返回Soap信息
             soap.MethodParameterValue = sb.ToString();
-
+     
             //创建请求对象
             HttpParameters query = InterfaceHttpConfig.Setting(p[0], soap.ToString(), DataFormatter.SOAP);
 

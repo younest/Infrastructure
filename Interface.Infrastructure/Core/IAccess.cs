@@ -5,18 +5,18 @@ namespace Interface.Infrastructure.Core
 {
     public interface IAccess
     {
-        string ToSerialization<T>(T obj);
-        List<T> ToDeserialization<T>(int sequence, string obj);
+        string ToSerialization<TEntity>(TEntity obj);
+        List<TEntity> ToDeserialization<TEntity>(int sequence, string obj);
     }
 
     public interface IDownload
     {
-        InterfaceResult<T> DownRequestHandler<T>(int sequence, HttpParameters http) where T : class, new();
-        InterfaceResult<T> DownResponseHandler<T>(InterfaceRequest request) where T : class, new();
+        InterfaceResult<TEntity> DownRequestHandler<TEntity>(int sequence, HttpParameters http) where TEntity : class, new();
+        InterfaceResult<TEntity> DownResponseHandler<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
     public interface IUpload
     {
-        InterfaceResult<T> UpRequestHandler<T>(int sequence, HttpParameters http) where T : class, new();
-        InterfaceResult<T> UpResponseHandler<T>(InterfaceRequest request) where T : class, new();
+        InterfaceResult<TEntity> UpRequestHandler<TEntity>(int sequence, HttpParameters http) where TEntity : class, new();
+        InterfaceResult<TEntity> UpResponseHandler<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 }

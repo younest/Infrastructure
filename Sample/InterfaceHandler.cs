@@ -27,9 +27,9 @@ namespace Sample
             get => _instance ?? (new InterfaceHandler());
         }
 
-        public InterfaceResult<T> GetEntities<T>(InterfaceRequest request) where T : class, new()
+        public InterfaceResult<TEntity> GetEntities<TEntity>(InterfaceRequest request) where TEntity : class, new()
         {
-            InterfaceResult<T> result = new InterfaceResult<T>();
+            InterfaceResult<TEntity> result = new InterfaceResult<TEntity>();
 
             try
             {
@@ -47,7 +47,7 @@ namespace Sample
                     default:
                         break;
                 }
-                List<T> list = DataConvert.GetListFromTable<T>(entities);
+                List<TEntity> list = DataConvert.GetListFromTable<TEntity>(entities);
 
                 result.Status = Status.Successfully;
                 result.Result = list;

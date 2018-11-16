@@ -12,13 +12,13 @@ namespace Interface.Infrastructure.Persistence
     {
         private static ILog logeer = LogManager.GetLogger("Persistence");
 
-        public static DataTable GetDataTableFromList<T>(this List<T> entities) where T : class, new()
+        public static DataTable GetDataTableFromList<TEntity>(this List<TEntity> entities) where TEntity : class, new()
         {
             if (null == entities || entities.Count == 0)
                 return null;
 
             DataTable dt = new DataTable();
-            PropertyInfo[] pArray = typeof(T).GetProperties();
+            PropertyInfo[] pArray = typeof(TEntity).GetProperties();
             try
             {
                 Array.ForEach<PropertyInfo>(pArray, p =>
@@ -44,19 +44,19 @@ namespace Interface.Infrastructure.Persistence
             }
         }
 
-        public static List<T> GetListFromTable<T>(DataTable dt) where T : class, new()
+        public static List<TEntity> GetListFromTable<TEntity>(DataTable dt) where TEntity : class, new()
         {
             if (dt == null || dt.Rows.Count == 0)
                 return null;
 
-            var objList = new List<T>();
+            var objList = new List<TEntity>();
 
-            PropertyInfo[] pArray = typeof(T).GetProperties();
+            PropertyInfo[] pArray = typeof(TEntity).GetProperties();
             try
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    T obj = new T();
+                    TEntity obj = new TEntity();
                     Array.ForEach<PropertyInfo>(pArray, p =>
                     {
                         if (dt.Columns.Contains(p.Name))

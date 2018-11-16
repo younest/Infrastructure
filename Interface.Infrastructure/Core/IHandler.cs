@@ -10,16 +10,16 @@ namespace Interface.Infrastructure.Core
 
     public interface IGet : IHandler
     {
-        InterfaceResult<T> GetEntities<T>(InterfaceRequest request) where T : class, new();
+        InterfaceResult<TEntity> GetEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 
     public interface IPost : IHandler
     {
-        InterfaceResult<T> AddEntities<T>(InterfaceRequest request) where T : class, new();
+        InterfaceResult<TEntity> AddEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 
     public interface IPut : IHandler
     {
-        InterfaceResult<T> UpdateEntities<T>(InterfaceRequest request) where T : class, new();
+        InterfaceResult<TEntity> UpdateEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 }

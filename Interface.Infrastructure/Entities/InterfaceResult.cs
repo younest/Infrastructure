@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Interface.Infrastructure.Entities
 {
-    public class InterfaceResult<T>
+    public class InterfaceResult<TEntity>
     {
         [DataMember(Order = 0)]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -16,11 +16,11 @@ namespace Interface.Infrastructure.Entities
         public string Message { get; set; }
 
         [DataMember(Order = 2)]
-        public List<T> Result { get; set; }
+        public List<TEntity> Result { get; set; }
 
         public InterfaceResult()
         {
-            Result = new List<T>();
+            Result = new List<TEntity>();
         }
     }
 }
