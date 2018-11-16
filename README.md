@@ -14,23 +14,28 @@
 <br>//创建http参数
 <br> HttpParameters p = new HttpParameters();
 
+<br>//http参数赋值
 <br>p.Url = "http://xxxxx/Service.svc/Customer/GetCustomerChain";
 <br>p.Method = RequestMethod.Post;
 <br>p.ContentType = ContentType.Json;
 <br>p.ParameterValue = "";
+
 <br>//返回接口结果
 <br>string result = InterfaceHttpRequest.Query(p);
 ## 2)InterfaceRequestSample
 <br>//获取查询参数
 <br>int sequence = (int)ServiceName.UserService;
 <br>string url = (string)InterfaceParameter.Instance.GetConfigParameters()["POS"];
+
 <br>//获取网络参数
 <br>string[] p = new string[] { url, string.Empty };
 <br>HttpParameters query = InterfaceParameter.Instance.GetHttpParameters(sequence, p);
+
 <br>//创建接口参数
 <br>InterfaceRequest request = new InterfaceRequest();
 <br>request.Sequence = sequence;
 <br>request.Parameter.Add(query);
+
 <br>//返回接口结果
 <br>InterfaceResult<UserEntity> result = InterfaceHandler.Instance.GetEntities<UserEntity>(request);
 <br>if (result.Status == Status.Failed) InterfaceHandler.Instance.Throw();
