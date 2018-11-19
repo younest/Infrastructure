@@ -5,7 +5,7 @@
 
 <br>2)IAccess主要定义接口接入部分的处理，其中包含IDownload、IUpload两个分支接口；
 
-<br>3)Ihandler主要定义数据实体层面的CRU等处理细节，分别各自对应：IGet、IPost、IPut接口；
+<br>3)IHandler主要定义数据实体层面的CRU等处理细节，分别各自对应：IGet、IPost、IPut接口；
 
 <br>4)其他包含了基于SAP接口、Quartz自动定时任务抽取第三方接口等相关配置项
 
@@ -70,4 +70,5 @@
 <br>//调用接口获取返回信息；
 <br>HttpParameters http = (HttpParameters)query;
 <br>XmlDocument doc = InterfaceHttpRequest.QueryXml(http);
-# IAccess、IDownload、IUpload Code Sample
+# IAccess Code Sample
+# IHandler Code Sample
