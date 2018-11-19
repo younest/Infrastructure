@@ -70,3 +70,4 @@
 <br>//调用接口获取返回信息；
 <br>HttpParameters http = (HttpParameters)query;
 <br>XmlDocument doc = InterfaceHttpRequest.QueryXml(http);
+# IAccess、IDownload、IUpload Code Sample
