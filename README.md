@@ -9,7 +9,7 @@
 
 <br>4)其他包含了基于SAP接口、Quartz自动定时任务抽取第三方接口等相关配置项
 
-# Request Sample
+# Code Sample
 ## 1)HttpRequestSample
 <br>//创建http参数
 <br> HttpParameters p = new HttpParameters();
