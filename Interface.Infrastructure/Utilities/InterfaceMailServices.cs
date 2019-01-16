@@ -50,7 +50,7 @@ namespace Interface.Infrastructure.Utilities
             msg.SubjectEncoding = System.Text.Encoding.UTF8;
 
             msg.From = new MailAddress(Settings.smtp.Credentials.Address);
-
+            
             Group group = Settings.inbox[_groupCode];
             foreach (Email email in group.Emails)
             {

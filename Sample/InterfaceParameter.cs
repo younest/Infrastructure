@@ -22,7 +22,7 @@ namespace Sample
             get => _instance ?? (new InterfaceParameter());
         }
 
-        public Dictionary<string, object> GetConfigParameters()
+        public Dictionary<string, object> GetGlobalParameters()
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
 
@@ -59,6 +59,16 @@ namespace Sample
 
 
         public SapParameters GetSapParameters()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Dictionary<string, object> GlobalParameters()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Throw()
         {
             throw new System.NotImplementedException();
         }

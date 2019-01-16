@@ -78,3 +78,16 @@ C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.csproj.CopyComplete
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.dll
 C:\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.pdb
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Interface.Infrastructure.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Interface.Infrastructure.pdb
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Common.Logging.Core.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Common.Logging.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Common.Logging.Log4Net1213.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\log4net.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\Newtonsoft.Json.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\sapnco.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\bin\Release\sapnco_utils.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Tmp\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.csproj.CopyComplete
+C:\Tmp\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.dll
+C:\Tmp\Infrastructure\Interface.Infrastructure\obj\Release\Interface.Infrastructure.pdb

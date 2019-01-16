@@ -8,18 +8,13 @@ namespace Interface.Infrastructure.Core
         void Throw();
     }
 
-    public interface IGet : IHandler
+    public interface IDownHandler:IHandler
     {
-        InterfaceResult<TEntity> GetEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
+        InterfaceResult<TEntity> DownEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 
-    public interface IPost : IHandler
+    public interface IUpHandler:IHandler
     {
-        InterfaceResult<TEntity> AddEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
-    }
-
-    public interface IPut : IHandler
-    {
-        InterfaceResult<TEntity> UpdateEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
+        InterfaceResult<TEntity> UpEntities<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
 }

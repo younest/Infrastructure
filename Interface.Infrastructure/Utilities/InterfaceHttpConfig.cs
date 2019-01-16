@@ -8,7 +8,7 @@ namespace Interface.Infrastructure.Utilities
 {
     public class InterfaceHttpConfig
     {
-        private static string FromSoapToString(SoapParameter soap)
+        public static string ConvertSoapToString(SoapParameter soap)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -18,18 +18,18 @@ namespace Interface.Infrastructure.Utilities
             sb.Append("xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" ");
             sb.AppendFormat("xmlns:{0}=\"http://schemas.xmlsoap.org/soap/envelope/\" ", soap.RootNode);
 
-            if (soap.RootDefaultNameSpace != string.Empty)
+            if (soap.RootDefaultNameSpace.Length != 0)
                 sb.Append(soap.RootDefaultNameSpace).Append(">");
 
-            if (soap.RootDefaultNameSpace == string.Empty)
+            if (soap.RootDefaultNameSpace.Length == 0)
                 sb.Append(">").AppendFormat("<{0}:Header/>", soap.RootNode);
 
             sb.AppendFormat("<{0}:Body>", soap.RootNode);
 
-            if (soap.MethodDefaultNameSpace != string.Empty)
+            if (soap.MethodDefaultNameSpace.Length != 0)
                 sb.AppendFormat("<{0} {1}>", soap.MethodNode, soap.MethodDefaultNameSpace);
 
-            if (soap.MethodDefaultNameSpace == string.Empty)
+            if (soap.MethodDefaultNameSpace.Length == 0)
                 sb.AppendFormat("<{0}>", soap.MethodNode);
 
             sb.AppendFormat("{0}", soap.MethodParameterValue);
@@ -45,26 +45,23 @@ namespace Interface.Infrastructure.Utilities
         {
             HttpParameters parameter = new HttpParameters();
             parameter.Url = url;
+
             switch (formatter)
             {
                 case DataFormatter.SOAP:
                     parameter.ContentType = ContentType.Soap;
-                    //parameter.soapAction = input.SoapAction;
                     parameter.ParameterValue = request;
                     break;
                 case DataFormatter.OData:
                     parameter.ContentType = ContentType.Soap;
-                    parameter.soapAction = "";
                     parameter.ParameterValue = request;
                     break;
                 case DataFormatter.XML:
                     parameter.ContentType = ContentType.Xml;
-                    parameter.soapAction = "";
                     parameter.ParameterValue = request;
                     break;
                 case DataFormatter.JSON:
                     parameter.ContentType = ContentType.Json;
-                    parameter.soapAction = "";
                     parameter.ParameterValue = request;
                     break;
                 default:

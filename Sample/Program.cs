@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 using System.Xml;
 using System.Text;
 
@@ -13,8 +14,9 @@ namespace Sample
         static void Main(string[] args)
         {
             //json http
-            HttpRequestSample();
-
+            //HttpRequestSample();
+            Send();
+            Console.ReadKey();
             //soap http
             //HttpSoapSample();
 
@@ -28,7 +30,7 @@ namespace Sample
         static void HttpSoapSample()
         {
             //获取配置参数
-            string[] p = new string[] { (string)InterfaceParameter.Instance.GetConfigParameters()["POS"],string.Empty,
+            string[] p = new string[] { (string)InterfaceParameter.Instance.GetGlobalParameters()["POS"],string.Empty,
                                         System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")};
 
             //创建Soap实体对象并添加参数
@@ -47,7 +49,7 @@ namespace Sample
             sb.AppendFormat("<idate xsi:type=\"xsd:string\">{0}</idate>", p[2]);
             //返回Soap信息
             soap.MethodParameterValue = sb.ToString();
-     
+
             //创建请求对象
             HttpParameters query = InterfaceHttpConfig.Setting(p[0], soap.ToString(), DataFormatter.SOAP);
 
@@ -71,7 +73,7 @@ namespace Sample
         static void InterfaceRequestSample()
         {
             int sequence = (int)ServiceName.UserService;
-            string url = (string)InterfaceParameter.Instance.GetConfigParameters()["POS"];
+            string url = (string)InterfaceParameter.Instance.GetGlobalParameters()["POS"];
 
             string[] p = new string[] { url, string.Empty };
             HttpParameters query = InterfaceParameter.Instance.GetHttpParameters(sequence, p);
@@ -80,9 +82,17 @@ namespace Sample
             request.Sequence = sequence;
             request.Parameter.Add(query);
 
-            InterfaceResult<UserEntity> result = InterfaceHandler.Instance.GetEntities<UserEntity>(request);
+            InterfaceResult<UserEntity> result = InterfaceHandler.Instance.DownEntities<UserEntity>(request);
             if (result.Status == Status.Failed) InterfaceHandler.Instance.Throw();
 
+        }
+
+        static void Send()
+        {
+            InterfaceMailEntity entity = (InterfaceMailEntity)InterfaceParameter.Instance.GetGlobalParameters()["mail"];
+
+            InterfaceMailServices.Settings = entity;
+            InterfaceMailServices.StartSending("ZAQDDSA", "SFA");
         }
     }
 }

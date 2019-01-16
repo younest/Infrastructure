@@ -9,12 +9,12 @@ namespace Interface.Infrastructure.Core
         List<TEntity> ToDeserialization<TEntity>(int sequence, string obj);
     }
 
-    public interface IDownload
+    public interface IDownAccess : IAccess, IHandler
     {
         InterfaceResult<TEntity> DownRequestHandler<TEntity>(int sequence, HttpParameters http) where TEntity : class, new();
         InterfaceResult<TEntity> DownResponseHandler<TEntity>(InterfaceRequest request) where TEntity : class, new();
     }
-    public interface IUpload
+    public interface IUpAccess : IAccess, IHandler
     {
         InterfaceResult<TEntity> UpRequestHandler<TEntity>(int sequence, HttpParameters http) where TEntity : class, new();
         InterfaceResult<TEntity> UpResponseHandler<TEntity>(InterfaceRequest request) where TEntity : class, new();
